@@ -1,0 +1,1198 @@
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+<     
+<             //}
+<             {    
+<             {    
+<             {    
+<             {*/    
+<             } 
+<             }  
+<             }*/  
+<             }*/  
+<         } 
+<         	
+<         	{
+<         	}
+<     //} 
+<     {
+<     {    
+<     }
+<     }
+<     }
+<     }
+<   {
+<   {
+<   {
+<   {
+<   }
+<   }
+<   }
+<   }*/
+< //
+< {
+< {
+< {
+< {
+< {
+< {
+< {
+< {
+< {
+< {
+< {
+< {
+< {    
+< }
+< }
+< }
+< }
+< }
+< }
+< }
+< }
+< }
+< }
+< }
+< }
+< }*/
+< 	
+< 	
+< 	
+< 	{
+< 	{
+< 	{
+< 	{
+< 	{
+< 	{
+< 	{
+< 	{
+< 	{
+< 	{
+< 	{
+< 	{
+< 	{
+< 	{
+< 	{
+< 	{
+< 	{
+< 	{
+< 	{
+< 	{
+< 	{
+< 	{
+< 	{
+< 	{
+< 	{
+< 	{
+< 	{
+< 	{
+< 	{
+< 	{
+< 	{
+< 	{
+< 	{
+< 	{	
+< 	}
+< 	}
+< 	}
+< 	}
+< 	}
+< 	}
+< 	}
+< 	}
+< 	}
+< 	}
+< 	}
+< 	}
+< 	}
+< 	}
+< 	}
+< 	}
+< 	}
+< 	}
+< 	}
+< 	}
+< 	}
+< 	}
+< 	}
+< 	}
+< 	}
+< 	}
+< 	}
+< 	}
+< 	}
+< 	}
+< 	}
+< 	}
+< 	}*/
+< 	}*/
+< 		
+< 		{
+< 		{
+< 		{
+< 		{
+< 		{
+< 		{
+< 		{
+< 		{
+< 		{
+< 		{
+< 		{
+< 		{
+< 		{
+< 		{
+< 		{
+< 		{
+< 		{
+< 		{
+< 		{
+< 		{
+< 		{
+< 		}
+< 		}
+< 		}
+< 		}
+< 		}
+< 		}
+< 		}
+< 		}
+< 		}
+< 		}
+< 		}
+< 		}
+< 		}
+< 		}
+< 		}
+< 		}
+< 		}
+< 		}
+< 		}
+< 		}
+< 		}
+< 			{
+< 			{
+< 			{
+< 			{
+< 			{
+< 			{
+< 			{
+< 			{
+< 			{
+< 			}
+< 			}
+< 			}
+< 			}
+< 			}
+< 			}
+< 			}
+< 			}
+< 			}
+< 				{
+< 				{
+< 				{
+< 				}
+< 				}
+< 				}
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+>  
+>   
+>   
+>     
+>      
+>       
+>       
+>             
+>             
+>             
+>             
+>             
+>             
+>             
+>             {
+>             {
+>             {
+>             {
+>             {
+>             {
+>             }
+>             }
+>             }
+>             }
+>             }
+>             }
+>             }*/           
+>       {
+>       {
+>       }
+>       }
+>       }
+>       }
+>       }
+>       }
+>     {
+>     {
+>     {
+>     {
+>     }
+>     }*/
+>   {
+>   {
+>   {
+>   {
+>   {
+>   {
+>   }
+>   }
+>   }
+>   }
+>   }
+>   }*/
+> {
+> {
+> {
+> {
+> {
+> }
+> }
+> }
+> } 
+> }*/
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+1,2d0
+15,19c7,13
+> //-1 means meaning wait for any child process.//The parent can use the system call wait() or waitpid() // In the case of a deceased child, as soon as a status has been reported, the zombie vanishes. 
+203,216c134,136
+218,219c138,142
+221c144
+223,232c146
+22c16,18
+233a148
+235,238c150
+240c152,153
+242,244c155,156
+24,32c20,27
+246,258d157
+260,268c159,201
+269a203,205
+271,273d206
+274a208,209
+276,288d210
+290c212,213
+292c215,217
+294,334c219,243
+335a245,247
+337,365d248
+34,36c29,31
+367,368c250
+370,501c252,256
+39d33
+3a2
+43,56c37,77
+502a258,262
+504,730c264,270
+5,12c4
+58,71c79,85
+732c272
+734,783c274,346
+73,77c87,88
+785c348
+787,802c350,363
+80,83c91,106
+84a108
+86,201c110,132
+>             //act.sa_handler = ctrl_c(signum);
+>     //allocate memory to arguments
+>     //allocate memory to arguments
+>     //and place \0 bytes at the end of each token.
+>     //and place \0 bytes at the end of each token.
+< 		args = split_cmd(pipes[i]," \t");
+< 		args = split_cmd(pipes[i]," \t");
+>       arguments[index] = NULL;
+>       arguments[index] = NULL;
+>     arguments[index] = token;
+>     arguments[index] = token;
+< 			arguments[i]=NULL;
+< 			arguments[i]=NULL;
+< 			arguments[i]=NULL;
+>       arguments = realloc(arguments, token_bufsize * sizeof(char*));
+>       arguments = realloc(arguments, token_bufsize * sizeof(char*));
+< 	arguments=redirect(arguments);
+>             //arguments=spliting_line(line);
+>             arguments=spliting_line(pipes[i]);
+> //background process.
+< //$ bg                     # puts the job in background
+<             break;
+>         //break if flag equals 1 
+< 	//brings a running or a stopped background job with given job number to foreground.
+>   buf=(char*)malloc(bufsize*sizeof(char));
+>   buf=(char*)malloc(bufsize*sizeof(char));
+>   buf=(char*)malloc(sizeof(char)*bufsize);
+>       buf[pos]='\0';
+>       buf[pos]=c;
+>   buf=strtok(line, delim);
+>   buf=strtok(line, delim);
+>     buf=strtok(NULL, delim);
+>     buf=strtok(NULL, delim);
+<     //cbreak();
+>     c=getchar();
+< 	//changes stopped background job to running background job 
+< 	char **args;
+< 	char **args;
+< 	char **arguments;
+< 	char **arguments;
+>             char ** arguments;
+>     char **arguments = malloc(token_bufsize * sizeof(char*));//storing tokens in arguments array
+>     char **arguments = malloc(token_bufsize * sizeof(char*));//storing tokens in arguments array
+>   char *buf;
+>   char *buf;
+>   char *buf;
+>       //char *chh;
+>             char ** commands;
+<     char *cur_dir = (char *)malloc(bufsize*sizeof(char));
+< 	char ** dirty;
+< 	char exec_path[1024];
+< 	char ** hello;
+>             char * line;
+< 		char *line1 = NULL;
+< 	char *line1 = NULL;
+< 		char *line = NULL;
+>   char *line = NULL;
+< 	char name[50];
+>   char name[50];
+>   char name[50];
+>             char ** pipes;
+> char* read_cmd()
+> char *reading_line(void)
+< char** redirect(char **arguments)
+< char **split_cmd(char *line, char *delim);
+> char **split_cmd(char *line, char *delim)
+< char **spliting_line(char *line);
+> char **spliting_line(char *line)
+> /*char **spliting_pipe(char *line,char *delim)
+> char **spliting_pipe(char *line, char *delim)//NEW 
+< 	char stat_path[1024];
+< 	char *to_file, *from_file;
+>       char *token;
+>       char *token;
+>   char **tokens;
+>   char **tokens;
+< 	char **values;
+< 		//char **values1;
+<             chdir(home_directory);
+<             chdir(home_directory);
+>       //chh=(char*)malloc(sizeof(char)*2);
+< 				closee=close(from_fd);
+< 				closee=close(to_fd);
+< 				closee=close(to_fd);
+>             commands=split_cmd(line, ";");
+< 	//CONDITION TO check if the job exists or not //not included yet
+< //Control-Z suspends the most recent foreground process (the last process to interact with the tty) 
+>     count++;
+>             count=count+1;
+< 			counter++;
+< 			counter++;
+< 				creat(to_file, 0777);
+< //Ctrl – C : this sends the SIGINT signal to the current process, killing it. This is often used when a process freezes.
+< //$ <CTRL-Z>               # stops the job
+< //Ctrl – Z : this sends the SIGSTOP signal to the current process, suspending it. This is mostly used for sending a process in the run in the background.
+> #define bufsize 1024
+> #define bufsize 1024
+< //#define BUFSIZE 1024
+< #define bufsize 1024 //BUFSIZE changed to bufsize
+< #define DELIM " \t\r\n\a"
+> #define DELIM " \t\r\n\a "
+< #define TOKEN_BUFSIZE 64
+> #define TOKEN_BUFSIZE 64
+< 	//DIR* proc;
+< 	dirty=spliting_line(line1);
+< 	dup2(in, 0);
+< 	dup2(out, 1);
+< 				dupp=dup2(from_fd, 0); 
+< 				dupp=dup2(to_fd, 1);
+< 				dupp=dup2(to_fd, 1); 
+<     } else {
+< 	else
+< 	else
+< 	else
+< 	/*else
+< 		else
+< 		else
+< 		else
+< 			else
+< 			else
+< 			else
+>             else
+<     else if(arguments[1]=="~")
+< 		else if (pid==0)
+< 		else if (pid==0)
+< 	else if(strcmp(arguments[0],"bg")==0)
+< 	else if(strcmp(arguments[0],"echo")==0)
+< 	else if(strcmp(arguments[0],"fg")==0)
+< 	else if(strcmp(arguments[0],"jobs")==0)
+< 	else if(strcmp(arguments[0],"kjob")==0)
+< 	else if(strcmp(arguments[0],"ls")==0 && i==0)//1 argument
+< 	else if(strcmp(arguments[0],"ls")==0 && i==1)//2 arguments
+< 	else if(strcmp(arguments[0],"nightswatch")==0)
+< 	else if(strcmp(arguments[0],"overkill")==0)
+< 	else if(strcmp(arguments[0],"pinfo")==0 && arguments[1]==NULL)
+< 	else if(strcmp(arguments[0],"pinfo")==0 && arguments[1]!=NULL)
+< 	else if(strcmp(arguments[0],"pwd")==0)
+< 	else if(strcmp(arguments[0],"quit")==0)
+< 	else if(strcmp(arguments[0],"setenv")==0 && i==0 || strcmp(arguments[0],"setenv")==0 && i>2 )//0 argument
+< 	else if(strcmp(arguments[0],"setenv")==0 && i==1)//1 argument
+< 	else if(strcmp(arguments[0],"setenv")==0 && i==2)//2arguments
+< 	else if(strcmp(arguments[0],"unsetenv")==0 && i==0)//1 argument
+< 	else if(strcmp(arguments[0],"unsetenv")==0 && i==1)//1 argument
+< 		else if(strcmp(arguments[1],"-a")==0)
+< 		else if(strcmp(arguments[1],"-l")==0)
+< 		else if(strcmp(arguments[1],"-la")==0||strcmp(arguments[1],"-al")==0)
+< 		else if(!strcmp(arguments[i], "<"))
+< 		else if(!strcmp(arguments[i], ">>"))
+<     endwin();
+< 			err=close(fd[0]);
+< 			err=close(fd[0]);
+< 			err=close(fd[1]);
+< 			err=close(fd[1]);
+< 				err=dup2(fd[1], 1);
+< 				err=dup2(fd[1], 1);
+< 			err=dup2(in, 0);
+< 			err=dup2(in, 0);
+< 			exit(0);
+< 			exit(0);
+>         exit(1);
+>         exit(1);
+>     exit(1);//exit failure
+>     exit(1);//exit failure
+< 			exit(EXIT_FAILURE);
+< 			exit(EXIT_FAILURE);
+>     exit(EXIT_FAILURE);
+>     exit(EXIT_FAILURE);
+>     exit(EXIT_FAILURE);
+<     //fflush(stdin);  
+< 	//fflush(stdin);
+> }fg_jobs;
+>   fg_jobs_buf[fg_job_no-1].stat=0;
+> fg_jobs fg_jobs_buf[bufsize];
+<     FILE *fptr;
+< 	FILE *fptr;
+< 	FILE *fptr,*fptr1;
+>             flag=1;
+<     //flag1 =0;
+>             flag=execute(arguments);
+>               flag=piping(pipes);
+<     flag_watch=1;
+<         flag_watch = dirty();
+< 	for(i=0; arguments[i]!=NULL; i++);
+>             for (i=0; commands[i]!=NULL; i++)
+< 	for(i=0; i<job_no; i++)
+< 	for(i=0; i<job_no; i++)
+< 	for(i=0; i<total; i++)
+< 	for(i=0; i<total; i++)
+< 	for(i=0; i<total; i++)
+< 	for(i=0; pipes[i]!=NULL; i++);
+< 	for(i=0; pipes[i]!=NULL; i++);
+>             for(p=0; p<bufsize; p++)
+>         fprintf(stderr, "allocation error\n");
+>         fprintf(stderr, "allocation error\n");
+>     fprintf(stderr, "allocation error\n");
+>     fprintf(stderr, "allocation error\n");
+<             fprintf(stderr, "Directory doesn't exist.\n");
+<   fprintf(stderr, "%s\n", strerror( errno )); 
+<   fprintf(stderr, "%s\n", strerror( errno )); 
+< 	//fprintf(stderr, "%s\n", strerror( errno)); 
+< 		fprintf(stderr, "%s\n", strerror( errno ));
+< 		fprintf(stderr, "%s\n", strerror( errno ));
+< 		fprintf(stderr, "%s\n", strerror( errno ));
+>   fprintf(stderr, "%s\n", strerror( errno ));
+< 	fptr1=fopen(exec_path, "r");
+< 	fptr=fopen("/proc/meminfo","r");
+< 	fptr=fopen(stat_path, "r");
+< 				from_fd = open(from_file, O_RDONLY);
+< 				from_file=(char*)malloc(sizeof(char)*bufsize);
+<     getcwd(cur_dir, bufsize);
+>             getcwd(home_directory, bufsize);
+< 	getline(&line1,&len,fptr);
+< 	getline(&line1,&len,fptr);
+< 	getline(&line1,&len,fptr);
+< 	getline(&line1,&len,fptr);
+< 	getline(&line1,&len,fptr);
+< 	getline(&line1,&len,fptr);
+< 	getline(&line1,&len,fptr);
+< 	getline(&line1,&len,fptr);
+< 	getline(&line1,&len,fptr);
+< 	getline(&line1,&len,fptr);
+< 	getline(&line1,&len,fptr);
+< 	getline(&line1,&len,fptr);
+< 	getline(&line1,&len,fptr);
+< 	getline(&line1,&len,fptr);
+< 	getline(&line1,&len,fptr);
+< 	getline(&line1,&len,fptr);
+< 	getline(&line1,&len,fptr);
+< 		getline(&line1,&len,fptr1);
+>   getline(&line, &bufs, stdin);
+< 		getline(&line,&len,fptr);
+< 			hola=1;
+>             home_directory=(char *)malloc(bufsize*sizeof(char));
+<         i++;
+< 		i++;
+< 	i--;
+< 		i=0;
+>       if (!arguments)
+>       if (!arguments)
+>       if (!arguments) {
+>       if (!arguments) {
+<     if(arguments[1]==NULL)
+<   if(arguments[1]==NULL)
+<   if(arguments[1]==NULL)
+< 	if (arguments[1]==NULL || arguments[2]==NULL)
+< 		if (atoi(values[22])==0)
+>   if(!buf)
+>     if(c==EOF || c=='\n')
+<     if (ch != ERR) {
+< 				if(closee==-1)
+< 				if(closee==-1)
+< 				if(closee==-1)
+>             if (count==0)
+>     /*if(!count && c==EOF)
+< 	if(count!=job_id)
+< 				if(dupp==-1)
+< 				if(dupp==-1)
+< 				if(dupp==-1)
+< 				if(err==-1)
+< 				if(err==-1)
+< 			if(err==-1)
+< 			if(err==-1)
+< 			if(err==-1)
+< 			if(err==-1)
+>   if(fg_jobs_buf[fg_job_no-1].stat==1)//pushing it to background process
+< 	if(fptr1==NULL)
+< 	if(fptr==NULL)
+< 				if(from_fd==-1)
+<         	if(getch()==113)
+>   if(getpid()!=shell_pid)
+< 		if(hola!=1)
+>     if (index >= token_bufsize)//exceeded memory size
+>     if (index >= token_bufsize)//exceeded memory size
+< 			if(i==total-1)
+< 			if(i==total-1)
+< 			if(i==total-1)
+< 			if(i!=(total-1))
+< 			if(i!=(total-1))
+< 	if(job_id==0)
+< 		if(jobs_buf[i].stat==1)
+< 		if(jobs_buf[i].stat==1)
+< 	if(jobs_buf[job_id-1].stat!=1)
+<   if(jobs_buf[proc_no-1].stat==0)
+<         if (kbhit()) {
+< 		if(pid==-1)
+< 		if(pid==-1)
+< 		if(pipe(fd)==-1)
+< 		if(pipe(fd)==-1)
+>             if(pipes[1]!=NULL)
+<   if(proc_no>job_no || jobs_buf[proc_no-1].stat!=0)//********************THIS to be added in prakrati's file/////
+<   if(proc_no>job_no)//running or stopped background to foreground
+<   /*if(ret_bg==-1)
+<   if(ret_fg==-1)
+< 		if(ret_setenv==-1)
+< 		if(ret_setenv==-1)
+< 		if(ret_unsetenv==-1)
+<         if(ret_val!=0)
+>   if(ret_z==-1)
+< 	if(strcmp(arguments[0],"cd")==0)
+< 		if(strcmp(arguments[1],"&")==0)
+< 		if(!strcmp(arguments[i], ">"))
+< 				if(to_fd==-1)
+< 				if(to_fd==-1)
+>   if(!tokens)
+>   if(!tokens)
+<             //i=i+1;
+<             i=i+1;
+<             i=i+1;
+<             i=i+1;
+<     //i=i+1;
+< 				i=i+1;
+< #include <curses.h>
+< #include <dirent.h>
+> //#include "functions.c"
+< //#include "key.c"
+> //#include "prompt.c"
+> #include <signal.h>
+< //#include "start.c"
+< #include <stdio.h>
+> #include <stdio.h>
+> #include <stdio.h>
+> #include <stdlib.h>
+> #include <string.h>
+< #include <syscall.h>
+< #include <sys/file.h>
+< #include <sys/types.h>
+< #include <sys/wait.h>
+> #include <sys/wait.h>
+< #include <unistd.h>
+> #include <unistd.h>
+> #include <unistd.h>
+>     index++;
+>     index++;
+< 	in=dup(0);
+< 			in=fd[0];
+< 			in=fd[0];
+<     initscr();
+< int bg(char **arguments)//when processes are in stopped state (Ctrl-z) we can move a process from backgr to foregr or foregr to back
+>   //int bufs = BUFSIZE;
+<     int c;
+>   int c;
+< int cd(char **arguments)
+<     int ch = getch();
+>             int count=0;
+>   int count=0;
+< 	int counter=0;
+> int ctrl_c_flag;
+< int dirty()
+< int ECHO(char **arguments)
+< int execute(char ** arguments)
+< int EXIT()
+< int fg(char **arguments)//when processes are in stopped state (Ctrl-z) we can move a process from backgr to foregr or foregr to back
+> int fg_job_no;
+> int flag;
+<     int flag1=1;
+<     int flag_watch = 0;
+< 	int hola=0;
+< 	/*int i;
+< 		int i;
+< 	int i;
+< 	int i;
+>             int i;
+< 			/*int i=0;
+< 	int i=0;
+>             //int i=0;
+<     int i=1;
+<     int i=5;
+< 	int in=0, i, total=0, fd[2], err, status=1;
+< 	int in=0, i, total=0, fd[2], err, status=1;
+>     int index =0;
+>     int index =0;
+< int in,out;
+< 	int job_id=atoi(arguments[1]);//process no.
+< int kbhit(void)
+< int kjob(char **arguments)//takes the job id of a running job and sends a signal value to
+< int listing_jobs()
+< int ls_a(char ** arguments);
+< int ls(char ** arguments);
+< int ls_la(char ** arguments);
+< int ls_l(char ** arguments);
+> int main(int argc, char* argv[])
+< int nightswatch(char **arguments)
+< int overkill(char **arguments)
+>             int p;
+< int pinfo(int shell_pid,char ** arguments)
+< /*int piping(char **pipes)
+< int piping(char **pipes)
+> int piping(char **pipes);//pipes[0]=ls -l
+>   int pos=0;
+>   int pos=0;
+>   int pos=0;
+<   int proc_no =atoi(arguments[1]);
+<   int proc_no =atoi(arguments[1]);
+< int pwd(char **arguments)
+<     int q;
+<   int ret_bg;
+<   int ret_fg;
+< 	int ret_kill;
+>   //int ret_kill;
+>   int ret_kill;
+< int ret_setenv;
+< int ret_unsetenv;
+<     int ret_val;
+>   int ret_z;
+> int run=0;
+<     int secs = atoi(arguments[2]);
+< 	int sig_no=atoi(arguments[2]);
+< int start(char ** arguments);
+< 	int stat;
+>   int stat;
+>   int stat;
+< 	int status,i;
+>     int token_bufsize= TOKEN_BUFSIZE;
+>     int token_bufsize= TOKEN_BUFSIZE;
+< 	int total, i, dupp, closee, to_fd, from_fd;
+>   //job_no++;
+>   //job_no++;//No need of incrementing job no . already incremented 
+>   jobs_buf[job_no].pid=fg_jobs_buf[fg_job_no-1].pid;
+>   jobs_buf[job_no].stat=1;
+<   jobs_buf[proc_no-1].stat=0;
+<   jobs_buf[proc_no-1].stat=1;//foreground to background 
+>               jobs_buf[p].stat=0;
+>               jobs_buf[p].stat=0;
+< //job                    # starts the job
+< 			kill(jobs_buf[i].pid, 9);
+< 	//kill only the job which is running 
+>       kill(shellpid, SIGKILL);
+>             //line=(char*)malloc(sizeof(char)*BUFSIZE);
+>             line=read_cmd();
+>             //line = reading_line();
+<     nodelay(stdscr, TRUE);
+<     //noecho();
+< //$ nohup <PID>            # unattaches the backgrounded job from the terminal
+\ No newline at end of file
+>       //null terminate the list of tokens
+>       //null terminate the list of tokens
+< 	//on success 0 returned
+< 	out=dup(1);
+< 		perror("Could not open (/proc/pid/cmdline)");
+< 		perror("Could not open (/proc/pid/stat)");
+< 	perror("Usage: kjob [process no.] [signal no.]");
+< 		pid=fork();
+< 		pid=fork();
+< 	pid_t pid;
+< 	pid_t pid;
+< 	pid_t pid;
+>   pid_t pid;
+>   pid_t pid;
+> //pipes[1] grep
+>             pipes=split_cmd(line,"|");
+>     pos++;
+< 		//printenv command to list all the env variables 
+<             printf("args %s \n",args[i]);
+<             printf("args %s \n",args[i]);
+< 	//printf("arguments[1]=%s\n",arguments[1]);
+< 				printf("bash: syntax error near unexpected token `newline'\n");
+< 				printf("bash: syntax error near unexpected token `newline'\n");
+< 				printf("bash: syntax error near unexpected token `newline'\n");
+>   //printf("bg_job_no after%d\n",job_no);
+>   //printf("bg_job_no before %d\n",job_no);
+<     //printf("Calling cd\n");
+>             //printf("commands[0] %s\n",commands[0]);          
+>             //printf("commands[1] %s\n",commands[1]);          
+>             //printf("commands[2] %s\n",commands[2]);          
+>             //printf("%d\n",ctrl_c_flag);
+< 		//printf("%d\n",ret_setenv);
+< 		//printf("%d\n",ret_setenv);//on success returns 0
+< 		//printf("%d\n",ret_unsetenv);
+< 			printf("[%d] Running %s [%d]\n", counter, jobs_buf[i].name, jobs_buf[i].pid);
+< 			//printf("%d",shell_pid);
+>               //printf("%d",shell_pid);
+< 			//printf("%d ",status);
+< 			printf("%d ",status);
+< 			printf("[%d] Stopped %s [%d]\n", counter, jobs_buf[i].name, jobs_buf[i].pid);
+< 		//printf("%dth args[0] %s\n",i,args[0]);          
+< 		printf("%dth args[0] %s\n",i,args[0]);          
+<         //printf("%dth args[1] %s\n",i,args[1]);          
+<         printf("%dth args[1] %s\n",i,args[1]);          
+<         //printf("%dth args[2] %s\n",i,args[2]);   
+<         printf("%dth args[2] %s\n",i,args[2]);   
+>             //printf("%dth args(pipe) %s arg[0]\n",i,arguments[0]);
+>             //printf("%dth args(pipe) %s arg[1]\n",i,arguments[1]);
+<             printf("%dth args %s \n",i,args[i]);
+<             printf("%dth args %s \n",i,args[i]);
+< 		//		printf("enter conditon\n");
+< 				printf("enter conditon\n");
+< 		//	printf("enter pid=0\n");
+< 			printf("enter pid=0\n");
+< 		//	printf("err close = %d\n",err);
+< 			printf("err close = %d\n",err);
+< 		//	printf("err open = %d\n",err);
+< 			printf("err open = %d\n",err);
+< 					printf("Error in dup2\n");
+< 					printf("Error in dup2\n");
+< 					printf("Error in executing dup2!\n");
+< 					printf("Error in executing dup2!\n");
+< 					printf("Error in executing dup2!\n");
+< 			printf("Error in forking!\n");
+< 			printf("Error in forking!\n");
+< 					printf("Error in opening file.\n");
+< 					printf("Error in opening file.\n");
+< 					printf("Error in opening file.\n");
+< 			printf("Error in piping!\n");
+< 			printf("Error in piping!\n");
+< 		printf("Error : Job ID cannot be zero!\n");
+< 		printf("Error: More than zero and not more than two command line arguments needed\n");
+< 		printf("Error: Needs atleast one argument\n");
+<     printf("ERROR: No such background process(running) number exists.\n");
+<     printf("ERROR: No such background process(stopped) number exists.\n");
+< 		printf("Error : Such a job id does not exist\n");
+< 				printf("Error while closing\n");
+< 				printf("Error while closing\n");
+< 				printf("Error while doing dup2!\n");
+< 				printf("Error while doing dup2!\n");
+< 			printf("Execuatble Path:Process is currently not executing\n");	
+< 		printf("Executable path: ~%s\n",line1);
+>   //printf("fg job-1 pid %d\n",fg_jobs_buf[fg_job_no-1].pid);
+>   //printf("fg_job_no after %d\n",fg_job_no);
+>   //printf("fg_job_no before %d\n",fg_job_no);
+>   //printf("fg_job_no %d status is 1 inside if\n",fg_job_no-1);
+>   //printf("fg job pid %d\n",fg_jobs_buf[fg_job_no].pid);
+< 	//printf("final i = %d\n",i);
+>            // printf("flag %d",flag); 
+>             //printf("flag for nightswatch %d\n",flag);
+<     //printf("flagwatch before returning %d\n",flag_watch);
+>   //printf("hello ctrlc\n");
+< 		//printf("hey");
+< 			//printf("hey");
+>     //printf("inside if\n");
+< 	//printf("job_id=%d\n",job_id);
+<   //printf("job_no=%d\n",job_no);
+<   printf("job_no=%d\n",job_no);
+< 		printf("job_no %d\n",job_no);
+< 		//printf("jobs_buf[0].stat %d\n",jobs_buf[0].stat);
+< 	//printf("jobs_buf[job_id-1].pid = %d\n",jobs_buf[job_id-1].pid);
+<   //printf("jobs_buf[proc_no].name=%s\n",jobs_buf[proc_no].name);
+<   //printf("jobs_buf[proc_no].name=%s\n",jobs_buf[proc_no].name);
+<             //printf("Key q pressed!");
+<     printf("\n");
+>   printf("\n");
+< 		printf("Needs job id for a running job\n");
+< 		printf("No such command\n");
+< 					printf("Not closed outfile properly!\n");
+< 					printf("Not closed outfile properly!\n");
+< 					printf("Not closed outfile properly!\n");
+>   //printf("pid %d\n",getpid());
+< 		//printf("pid = %d \n",pid);
+< 		printf("pid = %d \n",pid);
+< 	printf("pid--  %d\n",shell_pid);
+<   //printf("pid of the proc sent to backgr %d\n",jobs_buf[proc_no].pid);
+>             //printf("pipes[0] %s\n",pipes[0]);          
+>             //printf("pipes[1] %s\n",pipes[1]);          
+>             //printf("pipes[2] %s\n",pipes[2]); 
+>               //printf("Piping\n\n");
+>             //printf("print prompt after signal");
+< 		printf("Process Status --  %s\n",values[2]);
+<   //printf("ret_bg=%d\n",ret_bg);
+<   //printf("ret_fg=%d\n",ret_fg);
+< 	//printf("ret_kill =%d\n",ret_kill); 
+>     //printf("ret_kill %d\n",ret_kill);
+>   /*printf("ret_z %d\n",ret_z);
+< 			//printf("%s ",args);
+< 			//printf("%s ",args);
+<     	 printf("%s ", arguments[i] );
+>             printf("%s ",arguments[i]);
+< 				printf("%s hello",hello[i]);
+>             //printf("%s",line);
+< 		//printf ("%s",line1);
+<     printf("%s\n", cur_dir );
+< 	//printf("%s\n",line1);
+< 	//printf("%s\n",line1);
+<     printf("%s%s\n",dirty[1],dirty[2]);
+< 	//printf("stat_path %s\n",stat_path);
+< 		//printf("status %d\n",status);
+>   printf("stop and push to background(Ctrl-Z)\n");
+<            	//printf("%s ",values[2]);
+<     printf("Thankyou\n");
+< 	//printf("total pipes %d\n",total);
+< 	printf("total pipes %d\n",total);
+<     printf("Usage: bg [process no.]\n");
+<     printf("Usage: fg [process no.]\n");
+< 		printf("Virtul Memory Size -- %s\n",values[22]);
+< 			//printf("wait\n");
+< 			printf("wait\n");
+> //printing the prompt again after ctrl c and ctrl z
+> //Problems : kjob only implemented for background jobs 
+< 	//proc=opendir("/proc");
+>             prompt();
+>       //Reallocation(token_bufsize,arguments)
+>       //Reallocation(token_bufsize,arguments)
+<             refresh();
+<   ret_bg=kill(jobs_buf[proc_no].pid,18);//SIGCONT//When SIGSTOP or SIGTSTP is sent to a process, the usual behaviour is to pause that process in its current state.
+<   ret_fg=kill(jobs_buf[proc_no].pid,18);//SIGCONT//When SIGSTOP or SIGTSTP is sent to a process, the usual behaviour is to pause that process in its current state.
+>     ret_kill=kill(getpid(), SIGKILL);
+< 	ret_kill=kill(jobs_buf[job_id-1].pid, sig_no);
+< 		ret_setenv=setenv(arguments[1],"",1);//set it to empty string 
+< 		ret_setenv=setenv(arguments[1],arguments[2],1);//overwrite is 1//if name exists then overwrite 
+< 		ret_unsetenv=unsetenv(arguments[1]);
+<         return 0;
+<     return 0;
+<         return 1;
+<     	return 1;
+<     	return 1;
+<     return 1;
+<     return 1;
+<     return 1;
+<     return 1;
+<     return 1;
+<   return 1;
+<   return 1;
+< 		return 1;
+< 		return 1;
+< 		return 1;
+< 	return 1;
+< 	return 1;
+< 	return 1;
+< 	return 1;
+< 	return 1;
+< 	return 1;
+< 					return arguments;
+< 					return arguments;
+< 					return arguments;
+< 				return arguments;
+< 				return arguments;
+< 				return arguments;
+< 	return arguments;
+>       return arguments;
+>       return arguments;
+>       return buf;
+>       //return chh;
+>   //return ctrl_c_flag;
+>   //return ctrl_c_flag;
+<     return flag_watch;
+>   return line;
+< 	return status;
+< 	return status;
+< 	return status;
+>   return tokens;
+>   return tokens;
+<         ret_val = chdir(arguments[1]);
+>   ret_z=kill(fg_jobs_buf[fg_job_no-1].pid,SIGSTOP);
+<     //scrollok(stdscr, TRUE);
+>               shell_pid=getpid();
+>             //sigaction(SIGINT, &act, NULL); 
+>             //signal(SIGCHLD, sigchld_handler);//Whenever something interesting happens to the child (it exits, crashes, traps, stops, continues), and in particular when it dies, the parent is sent a SIGCHLD signal.
+>             signal(SIGCHLD, sigchld_handler);//Whenever something interesting happens to the child (it exits, crashes, traps, stops, continues), and in particular when it dies, the parent is sent a SIGCHLD signal.
+>             signal(SIGINT, ctrl_c);
+>   //signal(SIGINT, ctrl_c);
+>             signal(SIGTSTP, ctrl_z);
+>   //signal(SIGTSTP, ctrl_z);
+< 	size_t len=0;
+< 	size_t len=0;
+<     	sleep(secs);
+< 	sprintf(exec_path, "/proc/%d/cmdline", shell_pid);
+< 	sprintf(stat_path, "/proc/%d/stat", shell_pid);
+>   ssize_t bufs = 0; // have getline allocate a buffer for us
+<   	//stat should be 1 if bg process running 
+<   	//stat should be 1 if bg process running 
+< 			//status =1;
+< 			status  = 1;*/
+< 		status=1;
+< 		status=1;
+< 		status=1;
+< 		status=1;
+< 		status=1;
+< 		status=1;
+< 		status=bg(arguments);
+< 			status=cd(arguments);	//cd function
+< 			status=ECHO(arguments);
+< 			status=execute(args);
+< 			status=EXIT();
+< 		status=fg(arguments);
+< 		status=kjob(arguments);
+< 		status=listing_jobs();
+< 		status=ls_a(arguments);
+< 		status=ls(arguments);
+< 		status=ls_la(arguments);
+< 		status=ls_l(arguments);
+< 		status=nightswatch(arguments);
+< 		status=overkill(arguments);
+< 			status=pinfo(atoi(arguments[1]),arguments);
+< 			status=pinfo(shell_pid,arguments);
+< 			status=pwd(arguments);
+< 			status=start(args);
+< 		status=start(arguments);
+< 		status=start(arguments);
+>     //storing tokens in arguments
+>     //storing tokens in arguments
+>       //strcpy(chh, "#");
+< 				strcpy(from_file, arguments[i+1]);
+>   strcpy(jobs_buf[job_no].name,fg_jobs_buf[fg_job_no-1].name);
+< 				strcpy(to_file, arguments[i+1]);
+< 				strcpy(to_file, arguments[i+1]);
+>     //strtok//This function returns a pointer to the last token found in the string. A null pointer is returned if there are no tokens left to retrieve.
+>     //strtok//This function returns a pointer to the last token found in the string. A null pointer is returned if there are no tokens left to retrieve.
+< //that process//made it only for background job 
+<   // The process will only resume execution if it is sent the SIGCONT signal.
+<   // The process will only resume execution if it is sent the SIGCONT signal.
+> //The waitpid() system call suspends execution of the calling process until a child specified by pid argument has changed state.
+< // This will generally bring you back to your shell, from which you can generally enter the command bg to move the just-suspended process to the background (letting it continue to run) or fg to bring it back to the foreground.
+< 				to_fd = open(to_file, O_RDONLY | O_WRONLY | O_APPEND | O_CREAT, 0777);
+< 				to_fd = open(to_file, O_WRONLY | O_CREAT, 0777);
+< 				to_file=(char*)malloc(sizeof(char)*bufsize);
+< 				to_file=(char*)malloc(sizeof(char)*bufsize);
+>       token_bufsize += TOKEN_BUFSIZE;
+>       token_bufsize += TOKEN_BUFSIZE;
+>   tokens=malloc(bufsize*(sizeof(char*)));
+>   tokens=malloc(bufsize*(sizeof(char*)));
+>     tokens[pos++]=buf;
+>     tokens[pos++]=buf;
+>   tokens[pos]=NULL;
+>   tokens[pos]=NULL;
+>     token = strtok(line, delim);
+>     token = strtok(line, DELIM);
+>       token = strtok(NULL, DELIM);
+>       token = strtok(NULL, DELIM);
+< 	total=i;
+< 	total=i;
+< 	total=i;
+> typedef struct fg_jobs {
+<         ungetch(ch);
+< //(unless that process takes steps to ignore suspension, like shells normally do).
+< 		//values1=spliting_line(line1);
+< 		values=spliting_line(line);
+< 		//values=strtok(line," ");
+> void ctrl_c(int signum)//working for background processes also //but should only work for foreground processes  
+> void ctrl_z(int signum)//It should change the status of currently running job to stop, and push it in
+> void prompt();
+> void sigchld_handler(int signum);
+< 			wait(&pid);
+< 			wait(&pid);
+<   //we will have to check processes running in foreground 
+> //Whenever we kill a process , jobs status shows stopped not killed
+<     while (1) {
+>   while(1)
+< 		/*while(args[i]!=NULL)
+< 		/*while(args[i]!=NULL)
+< 			/*while(args[i]!=NULL)
+< 			while(args[i]!=NULL)
+<     while(arguments[i]!=NULL)
+< 	while(arguments[i]!=NULL)
+>             /*while(arguments[i]!=NULL)
+>   while (buf!=NULL)
+>   while (buf!=NULL)
+>             while(flag==1)
+< 			while(hello[i]!=NULL)
+>     while (token != NULL)
+>     while (token != NULL)
+< 		/*while(values[i]!=NULL)
+
+
+
+
+
+
+
+
+        	}
+{
+}
+	{
+	}
+		{
+		}
+			{
+//-1 means meaning wait for any child process.//The parent can use the system call wait() or waitpid() // In the case of a deceased child, as soon as a status has been reported, the zombie vanishes. 
+	char name[50];
+#define bufsize 1024
+			flag=1;
+			flag=1;
+            //fprintf(stderr, "%s\n", strerror( errno ));
+			if(errno!=0)
+	if(wpid>0	&& (WIFEXITED(status)==1))//returns true if the child terminated normally, that is, by calling exit(3) or _exit(2), or by returning from main(). 
+	if(wpid >0 && WIFSIGNALED(status)==1)
+#include <errno.h>
+#include <signal.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/wait.h>
+#include <unistd.h>
+int flag;
+int job_no;
+  //int procstatus;
+	int stat;
+	int status;
+			//job_no.incremented in start file . so decreased by 1 to get the correct index
+}jobs;
+			jobs_buf[job_no-1].stat=0;
+			jobs_buf[job_no-1].stat=0;
+jobs jobs_buf[bufsize];
+	/////////////////ONLY FOR BG JOBS //////////////////
+	pid_t pid;
+	pid_t wpid;
+	//printf("jobs_buf[%d].stat=%d\n",job_no,jobs_buf[job_no].stat);
+			printf("Process with pid %d exited due to a user-defined signal\n",wpid);
+			printf("Process with pid %d exited normally\n",wpid);
+			//prompt();
+			//prompt();
+//The waitpid() system call suspends execution of the calling process until a child specified by pid argument has changed state.
+typedef struct jobs {
+void prompt();
+void sigchld_handler(int signum)
+	wpid=waitpid(-1,&status,WNOHANG);//return immediately if no child has exited. 

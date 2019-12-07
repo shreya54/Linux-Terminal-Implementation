@@ -1,0 +1,1143 @@
+1,2d0
+< #include <unistd.h>
+< #include <stdio.h>
+3a2
+> #include <stdio.h>
+5,12c4
+< #include <sys/wait.h>
+< #define bufsize 1024 //BUFSIZE changed to bufsize
+< //#define BUFSIZE 1024
+< #define TOKEN_BUFSIZE 64
+< #define DELIM " \t\r\n\a"
+< #include <sys/types.h>
+< #include <dirent.h>
+< #include <curses.h>
+---
+> #include <unistd.h>
+15,19c7,13
+< #include <sys/file.h>
+< #include <syscall.h>
+< //#include "start.c"
+< //#include "key.c"
+< //
+---
+>  
+> #define bufsize 1024
+> #define TOKEN_BUFSIZE 64
+> #define DELIM " \t\r\n\a "
+> //#include "prompt.c"
+> //#include "functions.c"
+> void prompt();
+22c16,18
+< char **spliting_line(char *line);
+---
+> int run=0;
+> int flag;
+> 
+24,32c20,27
+< char **split_cmd(char *line, char *delim);
+< int start(char ** arguments);
+< int ls(char ** arguments);
+< int ls_l(char ** arguments);
+< int ls_a(char ** arguments);
+< int ls_la(char ** arguments);
+< int ret_setenv;
+< int ret_unsetenv;
+< int in,out;
+---
+> #include <unistd.h>
+> #include <stdio.h>
+> #include <stdlib.h>
+> #include <string.h>
+> #include <sys/wait.h>
+> #include <signal.h>
+> #define bufsize 1024
+> 
+34,36c29,31
+< 	pid_t pid;
+< 	int stat;
+< 	char name[50];
+---
+>   pid_t pid;
+>   int stat;
+>   char name[50];
+39d33
+< 
+43,56c37,77
+< 
+< 
+< int pwd(char **arguments)
+< {
+<     char *cur_dir = (char *)malloc(bufsize*sizeof(char));
+<     getcwd(cur_dir, bufsize);
+<     printf("%s\n", cur_dir );
+<     return 1;
+< }
+< 
+< int ECHO(char **arguments)
+< {
+<     int i=1;
+<     while(arguments[i]!=NULL)
+---
+> typedef struct fg_jobs {
+>   pid_t pid;
+>   int stat;
+>   char name[50];
+> 
+> }fg_jobs;
+> fg_jobs fg_jobs_buf[bufsize];
+> int fg_job_no;
+> 
+> void sigchld_handler(int signum);
+> //The waitpid() system call suspends execution of the calling process until a child specified by pid argument has changed state.
+> //-1 means meaning wait for any child process.//The parent can use the system call wait() or waitpid() // In the case of a deceased child, as soon as a status has been reported, the zombie vanishes. 
+> int ctrl_c_flag;
+> int piping(char **pipes);//pipes[0]=ls -l
+> //pipes[1] grep
+> 
+> 
+> char *reading_line(void)
+> {
+>   //int bufs = BUFSIZE;
+>   char *line = NULL;
+>   ssize_t bufs = 0; // have getline allocate a buffer for us
+>   getline(&line, &bufs, stdin);
+>   return line;
+> 
+> }
+> char* read_cmd()
+> {
+>   int count=0;
+>   int pos=0;
+>   int c;
+>   char *buf;
+>   buf=(char*)malloc(sizeof(char)*bufsize);
+>   if(!buf)
+>   {
+>     exit(EXIT_FAILURE);
+>   }
+>   while(1)
+>   {
+>     c=getchar();
+>     /*if(!count && c==EOF)
+58,71c79,85
+<     	 printf("%s ", arguments[i] );
+<         i++;
+<     }
+<     printf("\n");
+<     return 1;
+< }
+< 
+< 
+< int cd(char **arguments)
+< {
+<     //printf("Calling cd\n");
+<     int ret_val;
+< 
+<     if(arguments[1]==NULL)
+---
+>       kill(shellpid, SIGKILL);
+>       //char *chh;
+>       //chh=(char*)malloc(sizeof(char)*2);
+>       //strcpy(chh, "#");
+>       //return chh;
+>     }*/
+>     if(c==EOF || c=='\n')
+73,77c87,88
+<             chdir(home_directory);
+<     }
+<     else if(arguments[1]=="~")
+<     {    
+<             chdir(home_directory);
+---
+>       buf[pos]='\0';
+>       return buf;
+80,83c91,106
+<     {
+<         ret_val = chdir(arguments[1]);
+<         if(ret_val!=0)
+<             fprintf(stderr, "Directory doesn't exist.\n");
+---
+>       buf[pos]=c;
+>     pos++;
+>     count++;
+>   }
+> } 
+> /*char **spliting_pipe(char *line,char *delim)
+> {
+>     int token_bufsize= TOKEN_BUFSIZE;
+>     int index =0;
+>     //allocate memory to arguments
+>     char **arguments = malloc(token_bufsize * sizeof(char*));//storing tokens in arguments array
+>       char *token;
+>       if (!arguments)
+>       {
+>     fprintf(stderr, "allocation error\n");
+>     exit(1);//exit failure
+84a108
+>     token = strtok(line, delim);
+86,201c110,132
+<     return 1;
+< }
+< 
+< int EXIT()
+< {
+<     printf("Thankyou\n");
+<     return 0;
+< }
+< int pinfo(int shell_pid,char ** arguments)
+< {
+< 	char **values;
+< 
+< 	char stat_path[1024];
+< 	char exec_path[1024];
+< 	int hola=0;
+< 	size_t len=0;
+< 	//DIR* proc;
+< 	FILE *fptr,*fptr1;
+< 	printf("pid--  %d\n",shell_pid);
+< 	sprintf(stat_path, "/proc/%d/stat", shell_pid);
+< 	//proc=opendir("/proc");
+< 	//printf("stat_path %s\n",stat_path);
+< 	fptr=fopen(stat_path, "r");
+< 	if(fptr==NULL)
+< 	{
+< 		perror("Could not open (/proc/pid/stat)");
+<     	return 1;
+< 	}
+< 	else
+< 	{
+< 		int i;
+< 		char *line = NULL;
+< 		getline(&line,&len,fptr);
+< 		values=spliting_line(line);
+< 		//values=strtok(line," ");
+< 		i=0;
+< 
+< 		/*while(values[i]!=NULL)
+<             {*/    
+<            	//printf("%s ",values[2]);
+<             //i=i+1;
+<             //}
+< 		printf("Process Status --  %s\n",values[2]);
+< 		printf("Virtul Memory Size -- %s\n",values[22]);
+< 		if (atoi(values[22])==0)
+< 		{
+< 			printf("Execuatble Path:Process is currently not executing\n");	
+< 			hola=1;
+< 		}
+< 
+< 
+< 	}
+< 	sprintf(exec_path, "/proc/%d/cmdline", shell_pid);
+< 	fptr1=fopen(exec_path, "r");
+< 	if(fptr1==NULL)
+< 	{
+< 		perror("Could not open (/proc/pid/cmdline)");
+<     	return 1;
+< 	}
+< 	else
+< 	{	
+< 		char *line1 = NULL;
+< 		//char **values1;
+< 		getline(&line1,&len,fptr1);
+< 		//printf ("%s",line1);
+< 		//values1=spliting_line(line1);
+< 		
+< 		if(hola!=1)
+< 		{
+< 		printf("Executable path: ~%s\n",line1);
+< 		}
+< 	}
+< 
+< 
+< 
+< 
+< 	return 1;
+< }
+< int dirty()
+< {
+< 	FILE *fptr;
+< 	char *line1 = NULL;
+< 	size_t len=0;
+< 	char ** dirty;
+< 
+< 	fptr=fopen("/proc/meminfo","r");
+< 	getline(&line1,&len,fptr);
+< 	getline(&line1,&len,fptr);
+< 	getline(&line1,&len,fptr);
+< 	getline(&line1,&len,fptr);
+< 	getline(&line1,&len,fptr);
+< 	getline(&line1,&len,fptr);
+< 	getline(&line1,&len,fptr);
+< 	getline(&line1,&len,fptr);
+< 	getline(&line1,&len,fptr);
+< 	getline(&line1,&len,fptr);
+< 	getline(&line1,&len,fptr);
+< 	getline(&line1,&len,fptr);
+< 	getline(&line1,&len,fptr);
+< 	getline(&line1,&len,fptr);
+< 	getline(&line1,&len,fptr);
+< 	getline(&line1,&len,fptr);
+< 	getline(&line1,&len,fptr);
+< 	//printf("%s\n",line1);
+< 	dirty=spliting_line(line1);
+< 	int i=0;
+<     //fflush(stdin);  
+<     printf("%s%s\n",dirty[1],dirty[2]);
+<     //i=i+1;
+<     //} 
+< 	
+< 	return 1;
+< 
+< 	//printf("%s\n",line1);
+< 
+< 
+---
+>     //strtok//This function returns a pointer to the last token found in the string. A null pointer is returned if there are no tokens left to retrieve.
+>     //and place \0 bytes at the end of each token.
+>     while (token != NULL)
+>     {
+>     //storing tokens in arguments
+>     arguments[index] = token;
+>     index++;
+>     if (index >= token_bufsize)//exceeded memory size
+>     {
+>       //Reallocation(token_bufsize,arguments)
+>       token_bufsize += TOKEN_BUFSIZE;
+>       arguments = realloc(arguments, token_bufsize * sizeof(char*));
+>       if (!arguments) {
+>         fprintf(stderr, "allocation error\n");
+>         exit(1);
+>       }
+>       
+>       }
+>       token = strtok(NULL, DELIM);
+>       }
+>       //null terminate the list of tokens
+>       arguments[index] = NULL;
+>       return arguments;
+203,216c134,136
+< }
+< int overkill(char **arguments)
+< {
+< 	int i;
+< 	for(i=0; i<job_no; i++)
+< 	{
+< 		if(jobs_buf[i].stat==1)
+< 		{
+< 			kill(jobs_buf[i].pid, 9);
+< 		}
+< 	}
+< 	return 1;
+< }
+< int fg(char **arguments)//when processes are in stopped state (Ctrl-z) we can move a process from backgr to foregr or foregr to back
+---
+>      
+> }*/
+> char **spliting_pipe(char *line, char *delim)//NEW 
+218,219c138,142
+< 	//brings a running or a stopped background job with given job number to foreground.
+<   int ret_fg;
+---
+>   int pos=0;
+>   char *buf;
+>   buf=(char*)malloc(bufsize*sizeof(char));
+>   char **tokens;
+>   tokens=malloc(bufsize*(sizeof(char*)));
+221c144
+<   if(arguments[1]==NULL)
+---
+>   if(!tokens)
+223,232c146
+<     printf("Usage: fg [process no.]\n");
+<   }
+<   int proc_no =atoi(arguments[1]);
+<   //printf("job_no=%d\n",job_no);
+<   //printf("jobs_buf[proc_no].name=%s\n",jobs_buf[proc_no].name);
+<   if(proc_no>job_no)//running or stopped background to foreground
+<   {
+<   	//stat should be 1 if bg process running 
+<     printf("ERROR: No such background process(running) number exists.\n");
+<     return 1;
+---
+>     exit(EXIT_FAILURE);
+233a148
+>   buf=strtok(line, delim);
+235,238c150
+<   //printf("pid of the proc sent to backgr %d\n",jobs_buf[proc_no].pid);
+<   ret_fg=kill(jobs_buf[proc_no].pid,18);//SIGCONT//When SIGSTOP or SIGTSTP is sent to a process, the usual behaviour is to pause that process in its current state.
+<   // The process will only resume execution if it is sent the SIGCONT signal.
+<   if(ret_fg==-1)
+---
+>   while (buf!=NULL)
+240c152,153
+<   fprintf(stderr, "%s\n", strerror( errno )); 
+---
+>     tokens[pos++]=buf;
+>     buf=strtok(NULL, delim);
+242,244c155,156
+<   //printf("ret_fg=%d\n",ret_fg);
+<   jobs_buf[proc_no-1].stat=0;
+<   return 1;
+---
+>   tokens[pos]=NULL;
+>   return tokens;
+246,258d157
+< //job                    # starts the job
+< //$ <CTRL-Z>               # stops the job
+< //$ bg                     # puts the job in background
+< //$ nohup <PID>            # unattaches the backgrounded job from the terminal
+< //Control-Z suspends the most recent foreground process (the last process to interact with the tty) 
+< //(unless that process takes steps to ignore suspension, like shells normally do).
+< // This will generally bring you back to your shell, from which you can generally enter the command bg to move the just-suspended process to the background (letting it continue to run) or fg to bring it back to the foreground.
+< //Ctrl – C : this sends the SIGINT signal to the current process, killing it. This is often used when a process freezes.
+< //Ctrl – Z : this sends the SIGSTOP signal to the current process, suspending it. This is mostly used for sending a process in the run in the background.
+< int bg(char **arguments)//when processes are in stopped state (Ctrl-z) we can move a process from backgr to foregr or foregr to back
+< {
+< 	//changes stopped background job to running background job 
+<   int ret_bg;
+260,268c159,201
+<   if(arguments[1]==NULL)
+<   {
+<     printf("Usage: bg [process no.]\n");
+<   }
+<   //we will have to check processes running in foreground 
+<   int proc_no =atoi(arguments[1]);
+<   printf("job_no=%d\n",job_no);
+<   //printf("jobs_buf[proc_no].name=%s\n",jobs_buf[proc_no].name);
+<   if(proc_no>job_no || jobs_buf[proc_no-1].stat!=0)//********************THIS to be added in prakrati's file/////
+---
+> char **spliting_line(char *line)
+> {
+>     int token_bufsize= TOKEN_BUFSIZE;
+>     int index =0;
+>     //allocate memory to arguments
+>     char **arguments = malloc(token_bufsize * sizeof(char*));//storing tokens in arguments array
+>       char *token;
+>       if (!arguments)
+>       {
+>     fprintf(stderr, "allocation error\n");
+>     exit(1);//exit failure
+>     }
+>     token = strtok(line, DELIM);
+>     
+>     //strtok//This function returns a pointer to the last token found in the string. A null pointer is returned if there are no tokens left to retrieve.
+>     //and place \0 bytes at the end of each token.
+>     while (token != NULL)
+>     {
+>     //storing tokens in arguments
+>     arguments[index] = token;
+>     index++;
+>     if (index >= token_bufsize)//exceeded memory size
+>     {
+>       //Reallocation(token_bufsize,arguments)
+>       token_bufsize += TOKEN_BUFSIZE;
+>       arguments = realloc(arguments, token_bufsize * sizeof(char*));
+>       if (!arguments) {
+>         fprintf(stderr, "allocation error\n");
+>         exit(1);
+>       }
+>       
+>       }
+>       token = strtok(NULL, DELIM);
+>       }
+>       //null terminate the list of tokens
+>       arguments[index] = NULL;
+>       return arguments;
+> }
+> void ctrl_c(int signum)//working for background processes also //but should only work for foreground processes  
+> {
+>   int ret_kill;
+>   //printf("pid %d\n",getpid());
+>   if(getpid()!=shell_pid)
+269a203,205
+>     //printf("inside if\n");
+>     ret_kill=kill(getpid(), SIGKILL);
+>     //printf("ret_kill %d\n",ret_kill);
+271,273d206
+<   	//stat should be 1 if bg process running 
+<     printf("ERROR: No such background process(stopped) number exists.\n");
+<     return 1;
+274a208,209
+>   //signal(SIGINT, ctrl_c);
+>   //return ctrl_c_flag;
+276,288d210
+< 
+<   ret_bg=kill(jobs_buf[proc_no].pid,18);//SIGCONT//When SIGSTOP or SIGTSTP is sent to a process, the usual behaviour is to pause that process in its current state.
+<   // The process will only resume execution if it is sent the SIGCONT signal.
+<   /*if(ret_bg==-1)
+<   {
+<   fprintf(stderr, "%s\n", strerror( errno )); 
+<   }*/
+<   //printf("ret_bg=%d\n",ret_bg);
+<   if(jobs_buf[proc_no-1].stat==0)
+<   {
+<   jobs_buf[proc_no-1].stat=1;//foreground to background 
+<   }
+<   return 1;
+290c212,213
+< int kbhit(void)
+---
+> void ctrl_z(int signum)//It should change the status of currently running job to stop, and push it in
+> //background process.
+292c215,217
+<     int ch = getch();
+---
+>   //int ret_kill;
+>   //printf("hello ctrlc\n");
+>   int ret_z;
+294,334c219,243
+<     if (ch != ERR) {
+<         ungetch(ch);
+<         return 1;
+<     } else {
+<         return 0;
+<     }
+< }
+< int nightswatch(char **arguments)
+< {    
+<     int i=5;
+<     int c;
+<     int flag_watch = 0;
+<     int secs = atoi(arguments[2]);
+<     int q;
+<     FILE *fptr;
+<     int flag1=1;
+< 
+<     initscr();
+< 
+<     //cbreak();
+<     //noecho();
+<     nodelay(stdscr, TRUE);
+< 
+<     //scrollok(stdscr, TRUE);
+<     while (1) {
+<     	sleep(secs);
+<         flag_watch = dirty();
+< 
+< 
+<         if (kbhit()) {
+<         	
+<         	if(getch()==113)
+<         	{
+<             //printf("Key q pressed!");
+<             break;
+<         	}
+< 
+<             refresh();
+<         } 
+<     }
+<     endwin();
+---
+>   //printf("fg_job_no before %d\n",fg_job_no);
+>   //printf("bg_job_no before %d\n",job_no);
+>   if(fg_jobs_buf[fg_job_no-1].stat==1)//pushing it to background process
+>   {
+>   //printf("fg_job_no %d status is 1 inside if\n",fg_job_no-1);
+>   //job_no++;
+>   jobs_buf[job_no].stat=1;
+>   strcpy(jobs_buf[job_no].name,fg_jobs_buf[fg_job_no-1].name);
+>   jobs_buf[job_no].pid=fg_jobs_buf[fg_job_no-1].pid;
+>   //printf("fg job-1 pid %d\n",fg_jobs_buf[fg_job_no-1].pid);
+>   //printf("fg job pid %d\n",fg_jobs_buf[fg_job_no].pid);
+>   ret_z=kill(fg_jobs_buf[fg_job_no-1].pid,SIGSTOP);
+>   fg_jobs_buf[fg_job_no-1].stat=0;
+>   printf("\n");
+>   printf("stop and push to background(Ctrl-Z)\n");
+>   //job_no++;//No need of incrementing job no . already incremented 
+>   }
+>   //signal(SIGTSTP, ctrl_z);
+>   /*printf("ret_z %d\n",ret_z);
+>   if(ret_z==-1)
+>   {
+>   fprintf(stderr, "%s\n", strerror( errno ));
+>   }*/
+>   //printf("fg_job_no after %d\n",fg_job_no);
+>   //printf("bg_job_no after%d\n",job_no);
+335a245,247
+>   
+>   
+>   //return ctrl_c_flag;
+337,365d248
+<     
+<     flag_watch=1;
+<     //flag1 =0;
+<     //printf("flagwatch before returning %d\n",flag_watch);
+<     return flag_watch;
+< }
+< int listing_jobs()
+< {
+< 	int i;
+< 	int counter=0;
+< 	for(i=0; i<job_no; i++)
+< 	{
+< 		printf("job_no %d\n",job_no);
+< 		//printf("jobs_buf[0].stat %d\n",jobs_buf[0].stat);
+< 		if(jobs_buf[i].stat==1)
+< 		{
+< 
+< 			counter++;
+< 			printf("[%d] Running %s [%d]\n", counter, jobs_buf[i].name, jobs_buf[i].pid);
+< 		}
+< 		else
+< 		{
+< 			counter++;
+< 
+< 			printf("[%d] Stopped %s [%d]\n", counter, jobs_buf[i].name, jobs_buf[i].pid);
+< 
+< 		}
+< 	}
+< 	return 1;
+367,368c250
+< int kjob(char **arguments)//takes the job id of a running job and sends a signal value to
+< //that process//made it only for background job 
+---
+> char **split_cmd(char *line, char *delim)
+370,501c252,256
+< 	int ret_kill;
+< 	//printf("arguments[1]=%s\n",arguments[1]);
+< 	if (arguments[1]==NULL || arguments[2]==NULL)
+< 	{
+< 	perror("Usage: kjob [process no.] [signal no.]");
+< 	return 1;
+< 	}
+< 
+< 	int job_id=atoi(arguments[1]);//process no.
+< 	int sig_no=atoi(arguments[2]);
+< 
+< 	if(job_id==0)
+< 	{
+< 		printf("Error : Job ID cannot be zero!\n");
+< 		return 1;
+< 	}
+< 	if(jobs_buf[job_id-1].stat!=1)
+< 	{
+< 		printf("Needs job id for a running job\n");
+< 		return 1;
+< 	}
+< 	//CONDITION TO check if the job exists or not //not included yet
+< 	//kill only the job which is running 
+< 	/*int i;
+< 	
+< 	if(count!=job_id)
+< 	{
+< 		printf("Error : Such a job id does not exist\n");
+< 		return 1;
+< 	}*/
+< 	//printf("job_id=%d\n",job_id);
+< 	//printf("jobs_buf[job_id-1].pid = %d\n",jobs_buf[job_id-1].pid);
+< 	ret_kill=kill(jobs_buf[job_id-1].pid, sig_no);
+< 	//on success 0 returned
+< 	//fprintf(stderr, "%s\n", strerror( errno)); 
+< 	//printf("ret_kill =%d\n",ret_kill); 
+< 	return 1;
+< }
+< char** redirect(char **arguments)
+< {
+< 	char *to_file, *from_file;
+< 	int total, i, dupp, closee, to_fd, from_fd;
+< 	for(i=0; arguments[i]!=NULL; i++);
+< 	total=i;
+< 	for(i=0; i<total; i++)
+< 	{
+< 		if(!strcmp(arguments[i], ">"))
+< 		{
+< 			if(i==total-1)
+< 			{
+< 				printf("bash: syntax error near unexpected token `newline'\n");
+< 				return arguments;
+< 			}
+< 			else
+< 			{
+< 				to_file=(char*)malloc(sizeof(char)*bufsize);
+< 				strcpy(to_file, arguments[i+1]);
+< 
+< 				creat(to_file, 0777);
+< 
+< 				to_fd = open(to_file, O_WRONLY | O_CREAT, 0777);
+< 				if(to_fd==-1)
+< 				{
+< 					printf("Error in opening file.\n");
+< 					return arguments;
+< 				}
+< 				dupp=dup2(to_fd, 1);
+< 				if(dupp==-1)
+< 					printf("Error in executing dup2!\n");
+< 				closee=close(to_fd);
+< 				if(closee==-1)
+< 					printf("Not closed outfile properly!\n");
+< 			}
+< 			arguments[i]=NULL;
+< 		}
+< 		else if(!strcmp(arguments[i], "<"))
+< 		{
+< 			if(i==total-1)
+< 			{
+< 				printf("bash: syntax error near unexpected token `newline'\n");
+< 				return arguments;
+< 			}
+< 			else
+< 			{
+< 				from_file=(char*)malloc(sizeof(char)*bufsize);
+< 				strcpy(from_file, arguments[i+1]);
+< 
+< 				from_fd = open(from_file, O_RDONLY);
+< 				if(from_fd==-1)
+< 				{
+< 					printf("Error in opening file.\n");
+< 					return arguments;
+< 				}
+< 				dupp=dup2(from_fd, 0); 
+< 				if(dupp==-1)
+< 					printf("Error in executing dup2!\n");
+< 				closee=close(from_fd);
+< 				if(closee==-1)
+< 					printf("Not closed outfile properly!\n");
+< 			}
+< 			arguments[i]=NULL;
+< 		}
+< 		else if(!strcmp(arguments[i], ">>"))
+< 		{
+< 			if(i==total-1)
+< 			{
+< 				printf("bash: syntax error near unexpected token `newline'\n");
+< 				return arguments;
+< 			}
+< 			else
+< 			{
+< 				to_file=(char*)malloc(sizeof(char)*bufsize);
+< 				strcpy(to_file, arguments[i+1]);
+< 
+< 				to_fd = open(to_file, O_RDONLY | O_WRONLY | O_APPEND | O_CREAT, 0777);
+< 				if(to_fd==-1)
+< 				{
+< 					printf("Error in opening file.\n");
+< 					return arguments;
+< 				}
+< 				dupp=dup2(to_fd, 1); 
+< 				if(dupp==-1)
+< 					printf("Error in executing dup2!\n");
+< 				closee=close(to_fd);
+< 				if(closee==-1)
+< 					printf("Not closed outfile properly!\n");
+< 			}
+< 			arguments[i]=NULL;
+< 		}
+< 	}
+< 	return arguments;
+< }
+---
+>   int pos=0;
+>   char *buf;
+>   buf=(char*)malloc(bufsize*sizeof(char));
+>   char **tokens;
+>   tokens=malloc(bufsize*(sizeof(char*)));
+502a258,262
+>   if(!tokens)
+>   {
+>     exit(EXIT_FAILURE);
+>   }
+>   buf=strtok(line, delim);
+504,730c264,270
+< /*int piping(char **pipes)
+< {
+< 	pid_t pid;
+< 	char **args;
+< 	char **arguments;
+< 	int in=0, i, total=0, fd[2], err, status=1;
+< 	for(i=0; pipes[i]!=NULL; i++);
+< 	total=i;
+< 	printf("total pipes %d\n",total);
+< 
+< 
+< 	for(i=0; i<total; i++)
+< 	{
+< 		if(pipe(fd)==-1)
+< 			printf("Error in piping!\n");
+< 		args = split_cmd(pipes[i]," \t");
+< 		printf("%dth args[0] %s\n",i,args[0]);          
+< 
+<         printf("%dth args[1] %s\n",i,args[1]);          
+< 
+<         printf("%dth args[2] %s\n",i,args[2]);   
+< 		/*while(args[i]!=NULL)
+<             {    
+<             printf("%dth args %s \n",i,args[i]);
+<             i=i+1;
+<             } 
+< 		pid=fork();
+< 		printf("pid = %d \n",pid);
+< 		if(pid==-1)
+< 		{
+< 			printf("Error in forking!\n");
+< 			exit(EXIT_FAILURE);
+< 		}
+< 		else if (pid==0)
+< 		{
+< 			printf("enter pid=0\n");
+< 			err=dup2(in, 0);
+< 			printf("err open = %d\n",err);
+< 			if(err==-1)
+< 				printf("Error while doing dup2!\n");
+< 			err=close(fd[0]);
+< 			if(err==-1)
+< 				printf("Error while closing\n");
+< 			printf("err close = %d\n",err);
+< 			if(i!=(total-1))
+< 			{
+< 				printf("enter conditon\n");
+< 				err=dup2(fd[1], 1);
+< 				if(err==-1)
+< 					printf("Error in dup2\n");
+< 			}
+< 			while(args[i]!=NULL)
+<             {    
+<             printf("args %s \n",args[i]);
+<             i=i+1;
+<             }  
+< 			//printf("%s ",args);
+< 			status=execute(args);
+< 			printf("%d ",status);
+< 			exit(0);
+< 		}
+< 		else
+< 		{
+< 			printf("wait\n");
+< 			wait(&pid);
+< 			err=close(fd[1]);
+< 			in=fd[0];
+< 		}
+< 	}
+< 	return status;
+< }*/
+< int execute(char ** arguments)
+< {
+< 	int status,i;
+< 	char ** hello;
+< 	in=dup(0);
+< 	out=dup(1);
+< 	arguments=redirect(arguments);
+< 	while(arguments[i]!=NULL)
+< 		i++;
+< 
+< 	i--;
+< 	//printf("final i = %d\n",i);
+< 	if(strcmp(arguments[0],"cd")==0)
+< 	{
+< 			status=cd(arguments);	//cd function
+< 	}
+< 	else if(strcmp(arguments[0],"pwd")==0)
+< 	{
+< 			status=pwd(arguments);
+< 	}
+< 	else if(strcmp(arguments[0],"echo")==0)
+< 	{
+< 			status=ECHO(arguments);
+< 	}
+< 	else if(strcmp(arguments[0],"quit")==0)
+< 	{
+< 			status=EXIT();
+< 	}
+< 	else if(strcmp(arguments[0],"pinfo")==0 && arguments[1]==NULL)
+< 	{
+< 			status=pinfo(shell_pid,arguments);
+< 			//status =1;
+< 			//printf("%d",shell_pid);
+< 	}
+< 	else if(strcmp(arguments[0],"pinfo")==0 && arguments[1]!=NULL)
+< 	{
+< 			//printf("hey");
+< 			status=pinfo(atoi(arguments[1]),arguments);
+< 			/*int i=0;
+< 			while(hello[i]!=NULL)
+< 			{
+< 				printf("%s hello",hello[i]);
+< 				i=i+1;
+< 			}
+< 			status  = 1;*/
+< 	}
+< 	else if(strcmp(arguments[0],"nightswatch")==0)
+< 	{
+< 		status=nightswatch(arguments);
+< 		//printf("status %d\n",status);
+< 	}
+< 	else if(strcmp(arguments[0],"ls")==0 && i==0)//1 argument
+< 	{
+< 		status=ls(arguments);
+< 
+< 	}
+< 	else if(strcmp(arguments[0],"ls")==0 && i==1)//2 arguments
+< 	{
+< 		if(strcmp(arguments[1],"&")==0)
+< 		{
+< 		status=start(arguments);
+< 		}
+< 		else if(strcmp(arguments[1],"-l")==0)
+< 		{
+< 		status=ls_l(arguments);
+< 		}
+< 		else if(strcmp(arguments[1],"-a")==0)
+< 		{
+< 		status=ls_a(arguments);
+< 		}
+< 		else if(strcmp(arguments[1],"-la")==0||strcmp(arguments[1],"-al")==0)
+< 		{
+< 		status=ls_la(arguments);
+< 		}
+< 
+< 	}
+< 	else if(strcmp(arguments[0],"setenv")==0 && i==2)//2arguments
+< 	{
+< 		//printf("hey");
+< 		//printenv command to list all the env variables 
+< 		ret_setenv=setenv(arguments[1],arguments[2],1);//overwrite is 1//if name exists then overwrite 
+< 		if(ret_setenv==-1)
+< 		{
+< 		fprintf(stderr, "%s\n", strerror( errno ));
+< 		}
+< 		//printf("%d\n",ret_setenv);//on success returns 0
+< 		status=1;
+< 	}
+< 	else if(strcmp(arguments[0],"setenv")==0 && i==1)//1 argument
+< 	{
+< 		ret_setenv=setenv(arguments[1],"",1);//set it to empty string 
+< 		if(ret_setenv==-1)
+< 		{
+< 		fprintf(stderr, "%s\n", strerror( errno ));
+< 		}
+< 		//printf("%d\n",ret_setenv);
+< 		status=1;
+< 	}
+< 	else if(strcmp(arguments[0],"setenv")==0 && i==0 || strcmp(arguments[0],"setenv")==0 && i>2 )//0 argument
+< 	{
+< 		printf("Error: More than zero and not more than two command line arguments needed\n");
+< 		status=1;
+< 	}
+< 	else if(strcmp(arguments[0],"unsetenv")==0 && i==1)//1 argument
+< 	{
+< 		ret_unsetenv=unsetenv(arguments[1]);
+< 		if(ret_unsetenv==-1)
+< 		{
+< 		fprintf(stderr, "%s\n", strerror( errno ));
+< 		}
+< 		//printf("%d\n",ret_unsetenv);
+< 		status=1;
+< 
+< 	}
+< 	else if(strcmp(arguments[0],"unsetenv")==0 && i==0)//1 argument
+< 	{
+< 		printf("Error: Needs atleast one argument\n");
+< 		status=1;
+< 
+< 	}
+< 	else if(strcmp(arguments[0],"jobs")==0)
+< 	{
+< 		status=listing_jobs();
+< 	}
+< 	else if(strcmp(arguments[0],"overkill")==0)
+< 	{
+< 		status=overkill(arguments);
+< 	}
+< 	else if(strcmp(arguments[0],"kjob")==0)
+< 	{
+< 		status=kjob(arguments);
+< 	}
+< 	else if(strcmp(arguments[0],"fg")==0)
+< 	{
+< 		status=fg(arguments);
+< 	}
+< 	else if(strcmp(arguments[0],"bg")==0)
+< 	{
+< 		status=bg(arguments);
+< 	}
+< 	
+< 
+< 	//fflush(stdin);
+< 	else
+< 	{
+< 		status=start(arguments);
+< 	}
+< 	dup2(in, 0);
+< 	dup2(out, 1);
+< 	/*else
+< 	{
+< 		printf("No such command\n");
+< 		status=1;
+< 	}*/
+< 	return status;
+< 
+---
+>   while (buf!=NULL)
+>   {
+>     tokens[pos++]=buf;
+>     buf=strtok(NULL, delim);
+>   }
+>   tokens[pos]=NULL;
+>   return tokens;
+732c272
+< int piping(char **pipes)
+---
+> int main(int argc, char* argv[])
+734,783c274,346
+< 	pid_t pid;
+< 	char **args;
+< 	char **arguments;
+< 	int in=0, i, total=0, fd[2], err, status=1;
+< 	for(i=0; pipes[i]!=NULL; i++);
+< 	total=i;
+< 	//printf("total pipes %d\n",total);
+< 
+< 
+< 	for(i=0; i<total; i++)
+< 	{
+< 		if(pipe(fd)==-1)
+< 			printf("Error in piping!\n");
+< 		args = split_cmd(pipes[i]," \t");
+< 		//printf("%dth args[0] %s\n",i,args[0]);          
+< 
+<         //printf("%dth args[1] %s\n",i,args[1]);          
+< 
+<         //printf("%dth args[2] %s\n",i,args[2]);   
+< 		/*while(args[i]!=NULL)
+<             {    
+<             printf("%dth args %s \n",i,args[i]);
+<             i=i+1;
+<             }*/  
+< 		pid=fork();
+< 		//printf("pid = %d \n",pid);
+< 		if(pid==-1)
+< 		{
+< 			printf("Error in forking!\n");
+< 			exit(EXIT_FAILURE);
+< 		}
+< 		else if (pid==0)
+< 		{
+< 		//	printf("enter pid=0\n");
+< 			err=dup2(in, 0);
+< 		//	printf("err open = %d\n",err);
+< 			if(err==-1)
+< 				printf("Error while doing dup2!\n");
+< 			err=close(fd[0]);
+< 			if(err==-1)
+< 				printf("Error while closing\n");
+< 		//	printf("err close = %d\n",err);
+< 			if(i!=(total-1))
+< 			{
+< 		//		printf("enter conditon\n");
+< 				err=dup2(fd[1], 1);
+< 				if(err==-1)
+< 					printf("Error in dup2\n");
+< 			}
+< 			/*while(args[i]!=NULL)
+---
+>             char * line;
+>             char ** arguments;
+>             char ** commands;
+>             char ** pipes;
+>             int i;
+>             flag=1;
+>             home_directory=(char *)malloc(bufsize*sizeof(char));
+>             getcwd(home_directory, bufsize);
+>             int count=0;
+>             int p;
+>             for(p=0; p<bufsize; p++)
+>             {
+>               jobs_buf[p].stat=0;
+>               jobs_buf[p].stat=0;
+> 
+>             }
+>             //signal(SIGCHLD, sigchld_handler);//Whenever something interesting happens to the child (it exits, crashes, traps, stops, continues), and in particular when it dies, the parent is sent a SIGCHLD signal.
+>             signal(SIGINT, ctrl_c);
+>             signal(SIGTSTP, ctrl_z);
+> 
+>             //act.sa_handler = ctrl_c(signum);
+>             //sigaction(SIGINT, &act, NULL); 
+>             //printf("%d\n",ctrl_c_flag);
+>             
+>             while(flag==1)
+>             {
+>             //printf("print prompt after signal");
+>             prompt();
+>             if (count==0)
+>             {
+>               shell_pid=getpid();
+>               //printf("%d",shell_pid);
+>             }
+>             //line=(char*)malloc(sizeof(char)*BUFSIZE);
+>             //line = reading_line();
+>             line=read_cmd();
+>             //printf("%s",line);
+>             
+>             
+>             commands=split_cmd(line, ";");
+>             //printf("commands[0] %s\n",commands[0]);          
+> 
+>             //printf("commands[1] %s\n",commands[1]);          
+> 
+>             //printf("commands[2] %s\n",commands[2]);          
+>             for (i=0; commands[i]!=NULL; i++)
+>             {
+> 
+>             //arguments=spliting_line(line);
+>             pipes=split_cmd(line,"|");
+>             //printf("pipes[0] %s\n",pipes[0]);          
+> 
+>             //printf("pipes[1] %s\n",pipes[1]);          
+> 
+>             //printf("pipes[2] %s\n",pipes[2]); 
+> 
+>             
+>             if(pipes[1]!=NULL)
+>             {
+>               //printf("Piping\n\n");
+>               flag=piping(pipes);
+>             }
+>             else
+>             {
+>             arguments=spliting_line(pipes[i]);
+>             flag=execute(arguments);
+>             //printf("%dth args(pipe) %s arg[0]\n",i,arguments[0]);
+>             //printf("%dth args(pipe) %s arg[1]\n",i,arguments[1]);
+> 
+>             }
+>             }
+>             //int i=0;
+>             /*while(arguments[i]!=NULL)
+785c348
+<             printf("args %s \n",args[i]);
+---
+>             printf("%s ",arguments[i]);
+787,802c350,363
+<             }*/  
+< 			//printf("%s ",args);
+< 			status=start(args);
+< 			//printf("%d ",status);
+< 			exit(0);
+< 		}
+< 		else
+< 		{
+< 			//printf("wait\n");
+< 			wait(&pid);
+< 			err=close(fd[1]);
+< 			in=fd[0];
+< 		}
+< 	}
+< 	return status;
+< }
+\ No newline at end of file
+---
+>             }*/           
+>             
+>             
+>             signal(SIGCHLD, sigchld_handler);//Whenever something interesting happens to the child (it exits, crashes, traps, stops, continues), and in particular when it dies, the parent is sent a SIGCHLD signal.
+>             //printf("flag for nightswatch %d\n",flag);
+>             count=count+1;
+>            // printf("flag %d",flag); 
+>         //break if flag equals 1 
+>             
+>             }
+> }
+> //Problems : kjob only implemented for background jobs 
+> //Whenever we kill a process , jobs status shows stopped not killed
+> //printing the prompt again after ctrl c and ctrl z
